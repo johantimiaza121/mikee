@@ -70,21 +70,15 @@
         .btn:hover {
             transform: scale(1.1);
         }
-        #videoContainer {
+        #audioPlayer {
+            display: none; /* Ocultar el reproductor */
+        }
+        #adMessage {
             display: none;
-            text-align: center;
-            margin-top: 20px;
-        }
-        #videoMessage {
             font-size: 18px;
-            color: red; /* Mensaje en color rojo */
+            color: red;
             font-weight: bold;
-            margin-bottom: 10px;
-        }
-        #videoPlayer {
-            width: 400px;
-            height: 225px;
-            border-radius: 10px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -99,21 +93,20 @@
 
     <div id="message">¡Ya sabía que ibas a aceptar!</div>
 
-    <!-- Contenedor del video con mensaje -->
-    <div id="videoContainer">
-        <p id="videoMessage">Perdón por el comercial, es que no hubo para YouTube Premium. Te quiero mucho ❤️</p>
-        <iframe id="videoPlayer" 
-            src="https://www.youtube.com/embed/MrHViy6rwIE?autoplay=1" 
-            frameborder="0" 
-            allow="autoplay; encrypted-media" 
-            allowfullscreen>
-        </iframe>
-    </div>
+    <!-- Mensaje del comercial -->
+    <p id="adMessage">Perdón por el comercial, es que no hubo para YouTube Premium. Te quiero ❤️</p>
+
+    <!-- Audio del video de YouTube -->
+    <iframe id="audioPlayer" 
+        src="https://www.youtube.com/embed/MrHViy6rwIE?autoplay=1"
+        allow="autoplay" frameborder="0">
+    </iframe>
 
     <script>
         document.getElementById("yesButton").addEventListener("click", function() {
             document.getElementById("message").style.display = "block";
-            document.getElementById("videoContainer").style.display = "block";
+            document.getElementById("adMessage").style.display = "block";
+            document.getElementById("audioPlayer").style.display = "block"; // Reproducir audio oculto
             this.disabled = true;
         });
 
