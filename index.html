@@ -106,11 +106,19 @@
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
-        #musicPlayer {
+        #videoContainer {
             display: none;
-            width: 300px;
-            height: 166px;
+            text-align: center;
             margin-top: 20px;
+        }
+        #videoMessage {
+            font-size: 16px;
+            color: #d81b60;
+            margin-bottom: 10px;
+        }
+        #videoPlayer {
+            width: 300px;
+            height: 170px;
             border-radius: 10px;
         }
     </style>
@@ -128,17 +136,21 @@
 
     <div id="message">¡Ya sabía que ibas a aceptar!</div>
 
-    <!-- Reproductor de música de SoundCloud (oculto al inicio) -->
-    <iframe id="musicPlayer" 
-        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/qu-nh-kh/louis-armstrong-la-vie-en-rose&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false" 
-        frameborder="0" 
-        allow="autoplay">
-    </iframe>
+    <!-- Contenedor del video con mensaje -->
+    <div id="videoContainer">
+        <p id="videoMessage">Perdón por el comercial, es que no hubo para YouTube Premium. Te quiero mucho ❤️</p>
+        <iframe id="videoPlayer" 
+            src="https://www.youtube.com/embed/MrHViy6rwIE?autoplay=1" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+        </iframe>
+    </div>
 
     <script>
         document.getElementById("yesButton").addEventListener("click", function() {
             document.getElementById("message").style.display = "block";
-            document.getElementById("musicPlayer").style.display = "block";
+            document.getElementById("videoContainer").style.display = "block";
 
             setInterval(function() {
                 const heart = document.createElement("div");
