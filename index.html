@@ -17,16 +17,17 @@
             overflow: hidden;
             position: relative;
         }
+        /* Corazón grande palpitando */
         #heartContainer {
             font-size: 100px;
             color: #d81b60;
             position: absolute;
-            top: 10%;
-            animation: heartPulse 1s infinite alternate;
+            top: 5%;
+            animation: heartPulse 1.5s infinite alternate ease-in-out;
         }
         @keyframes heartPulse {
             0% { transform: scale(1); }
-            100% { transform: scale(1.2); }
+            100% { transform: scale(1.3); }
         }
         h1 {
             font-size: 60px;
@@ -35,11 +36,6 @@
             text-align: center;
             position: relative;
             margin-top: 100px;
-        }
-        .btn-container {
-            display: flex;
-            gap: 40px;
-            margin-top: 30px;
         }
         .btn {
             color: white;
@@ -64,15 +60,16 @@
         .btn:hover {
             transform: scale(1.1);
         }
+        /* Corazones flotantes */
         .heart {
             position: absolute;
             font-size: 30px;
             color: #d81b60;
-            animation: floatHeart 2s infinite;
+            animation: floatHeart 4s linear infinite;
         }
         @keyframes floatHeart {
             0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-100px); opacity: 0; }
+            100% { transform: translateY(-150px); opacity: 0; }
         }
     </style>
 </head>
@@ -82,24 +79,24 @@
 
     <h1>¿Quieres ser mi San Valentín?</h1>
 
-    <div class="btn-container">
-        <button class="btn" id="yesButton">Sí</button>
-        <button class="btn" id="noButton">No</button>
-    </div>
+    <button class="btn" id="yesButton">Sí</button>
+    <button class="btn" id="noButton">No</button>
 
     <script>
+        // Función para generar corazones infinitamente cuando presionas "Sí"
         document.getElementById("yesButton").addEventListener("click", function() {
             setInterval(function() {
                 const heart = document.createElement("div");
                 heart.classList.add("heart");
                 heart.innerText = "❤️";
                 heart.style.left = Math.random() * 100 + "%";
-                heart.style.animationDuration = Math.random() * 2 + 2 + "s";
+                heart.style.animationDuration = Math.random() * 3 + 2 + "s";
                 document.body.appendChild(heart);
-                setTimeout(() => heart.remove(), 2000);
+                setTimeout(() => heart.remove(), 5000);
             }, 200);
         });
 
+        // Función para mover el botón "No" a una posición aleatoria cuando lo aplastas
         document.getElementById("noButton").addEventListener("click", function() {
             const noButton = document.getElementById("noButton");
             const x = Math.random() * (window.innerWidth - noButton.clientWidth);
