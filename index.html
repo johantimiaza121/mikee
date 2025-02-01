@@ -62,10 +62,10 @@
             transition: transform 0.3s ease;
         }
         #yesButton {
-            background-color: #f48fb1; /* Rosa claro */
+            background-color: #f48fb1;
         }
         #noButton {
-            background-color: #c2185b; /* Rojo oscuro */
+            background-color: #c2185b;
         }
         .btn:hover {
             transform: scale(1.1);
@@ -106,42 +106,17 @@
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
-
-        /* Ocultar el video pero mantener el audio */
-        .youtube-audio {
-            position: absolute;
-            width: 0;
-            height: 0;
-            border: none;
-            display: block;
-        }
-
-        /* Botón de inicio de música */
-        #musicButton {
-            position: absolute;
-            bottom: 10%;
-            left: 10%;
-            background-color: #d81b60;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-        #musicButton:hover {
-            transform: scale(1.1);
+        #musicPlayer {
+            display: none;
+            width: 300px;
+            height: 80px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Corazón animado sobre el título -->
     <div id="heartContainer">❤️</div>
-
-    <!-- Música de SoundCloud (solo audio, sin portada) -->
-    <iframe id="audioPlayer" class="youtube-audio" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com%2Fqu-nh-kh%2Flouis-armstrong-la-vie-en-rose%3Fsi%3D2a2424e4253d47b495b85c3232565e37%26utm_source%3Dclipboard%26utm_medium%3Dtext%26utm_campaign%3Dsocial_sharing&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&visual=false" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
     <h1>¿Quieres ser mi San Valentín?</h1>
 
@@ -152,47 +127,33 @@
 
     <div id="message">¡Ya sabía que ibas a aceptar!</div>
 
-    <!-- Botón de inicio de música -->
-    <button id="musicButton">Aplasta aquí para que sepas cómo te amo</button>
+    <!-- Reproductor de música oculto -->
+    <iframe id="musicPlayer" src="https://www.youtube.com/embed/0UuCHUhU6V8?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
     <script>
-        // Deshabilitar el botón "Sí" después de hacer clic
         document.getElementById("yesButton").addEventListener("click", function() {
-            // Muestra el mensaje
             document.getElementById("message").style.display = "block";
+            document.getElementById("musicPlayer").style.display = "block";
 
-            // Genera corazones que flotan en la pantalla
             setInterval(function() {
                 const heart = document.createElement("div");
                 heart.classList.add("heart");
                 heart.innerText = "❤️";
                 heart.style.left = Math.random() * 100 + "%";
-                heart.style.animationDuration = Math.random() * 2 + 2 + "s"; // Duración aleatoria
+                heart.style.animationDuration = Math.random() * 2 + 2 + "s";
                 document.body.appendChild(heart);
-
-                // Eliminar el corazón después de que termine su animación
                 setTimeout(function() {
                     heart.remove();
                 }, 2000);
-            }, 200); // Crear un nuevo corazón cada 200ms
-
-            // Deshabilitar el botón "Sí"
+            }, 200);
+            
             this.disabled = true;
         });
 
-        // Función para mover el botón "No" cuando se hace clic en él
         document.getElementById("noButton").addEventListener("click", function() {
-            // Mueve el botón "No" a una nueva posición aleatoria
             const noButton = document.getElementById("noButton");
             noButton.style.left = Math.random() * 80 + "%";
             noButton.style.top = Math.random() * 80 + "%";
-        });
-
-        // Función para iniciar la música al presionar el botón "Aplasta aquí"
-        document.getElementById("musicButton").addEventListener("click", function() {
-            const audioPlayer = document.getElementById("audioPlayer");
-            audioPlayer.src = "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com%2Fqu-nh-kh%2Flouis-armstrong-la-vie-en-rose%3Fsi%3D2a2424e4253d47b495b85c3232565e37%26utm_source%3Dclipboard%26utm_medium%3Dtext%26utm_campaign%3Dsocial_sharing&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&visual=false";
-            this.style.display = "none"; // Oculta el botón después de hacer clic
         });
     </script>
 
