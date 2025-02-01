@@ -109,8 +109,9 @@
         #musicPlayer {
             display: none;
             width: 300px;
-            height: 80px;
+            height: 166px;
             margin-top: 20px;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -127,8 +128,12 @@
 
     <div id="message">¡Ya sabía que ibas a aceptar!</div>
 
-    <!-- Reproductor de música oculto -->
-    <iframe id="musicPlayer" src="https://www.youtube.com/embed/0UuCHUhU6V8?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <!-- Reproductor de música de SoundCloud (oculto al inicio) -->
+    <iframe id="musicPlayer" 
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/qu-nh-kh/louis-armstrong-la-vie-en-rose&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false" 
+        frameborder="0" 
+        allow="autoplay">
+    </iframe>
 
     <script>
         document.getElementById("yesButton").addEventListener("click", function() {
