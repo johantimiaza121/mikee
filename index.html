@@ -70,62 +70,25 @@
         .btn:hover {
             transform: scale(1.1);
         }
-        .heart {
-            position: absolute;
-            font-size: 30px;
-            color: #d81b60;
-            animation: floatHeart 2s infinite;
-        }
-        @keyframes floatHeart {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-100px); opacity: 0; }
-        }
-        #noButton {
-            position: absolute;
-            left: 20%;
-            top: 80%;
-            z-index: 3;
-        }
-        #yesButton {
-            position: absolute;
-            left: 60%;
-            top: 80%;
-            z-index: 3;
-        }
-        #heartContainer {
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 60px;
-            color: #d81b60;
-            animation: heartPulse 1.5s infinite alternate;
-        }
-        @keyframes heartPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
         #videoContainer {
             display: none;
             text-align: center;
             margin-top: 20px;
         }
         #videoMessage {
-            font-size: 16px;
-            color: #d81b60;
+            font-size: 18px;
+            color: red; /* Mensaje en color rojo */
+            font-weight: bold;
             margin-bottom: 10px;
         }
         #videoPlayer {
-            width: 300px;
-            height: 170px;
+            width: 400px;
+            height: 225px;
             border-radius: 10px;
         }
     </style>
 </head>
 <body>
-
-    <div id="heartContainer">❤️</div>
 
     <h1>¿Quieres ser mi San Valentín?</h1>
 
@@ -151,19 +114,6 @@
         document.getElementById("yesButton").addEventListener("click", function() {
             document.getElementById("message").style.display = "block";
             document.getElementById("videoContainer").style.display = "block";
-
-            setInterval(function() {
-                const heart = document.createElement("div");
-                heart.classList.add("heart");
-                heart.innerText = "❤️";
-                heart.style.left = Math.random() * 100 + "%";
-                heart.style.animationDuration = Math.random() * 2 + 2 + "s";
-                document.body.appendChild(heart);
-                setTimeout(function() {
-                    heart.remove();
-                }, 2000);
-            }, 200);
-            
             this.disabled = true;
         });
 
